@@ -1,0 +1,23 @@
+// @import (Google font urls here) //
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;700;800&display=swap');
+
+* {
+	font-family: 'Poppins';
+}
+
+html, body, #app {
+	line-height: 1.5;
+}
+
+h1 {
+	font-size: 80px;
+	line-height: 1.1;
+
+	@include mobile {
+		font-size: 32px;
+	}
+}
+
+p {
+	font-size: 16px;
+}

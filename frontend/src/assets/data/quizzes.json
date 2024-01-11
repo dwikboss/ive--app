@@ -1,0 +1,65 @@
+{
+    "quizzes": [
+      {
+        "id": 1,
+        "title": "How well do you know Gaeul and Yujin",
+        "questions": [
+          {
+            "id": 1,
+            "videoSrc": "gy-q-1.mp4",
+            "answers": ["Blue Blood", "Off the Record", "After Like"],
+            "correctAnswerIndex": 2
+          },
+          {
+            "id": 2,
+            "videoSrc": "gy-q-2.mp4",
+            "answers": ["Summer", "Autumn", "Winter"],
+            "correctAnswerIndex": 1
+          },
+          {
+            "id": 3,
+            "videoSrc": "gy-q-3.mp4",
+            "answers": ["SBS The Show", "KBS World Music Banks", "KBS World Inkigayo"],
+            "correctAnswerIndex": 0
+          },
+          {
+            "id": 4,
+            "videoSrc": "gy-q-4.mp4",
+            "answers": ["Mint Chocolate", "Honey Mustard", "Cheese balls"],
+            "correctAnswerIndex": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Finish the lyric with Leeseo",
+        "questions": [
+          {
+            "id": 1,
+            "videoSrc": "ls-q-1.mp4",
+            "answers": ["Answer A", "Answer B", "Answer C"],
+            "correctAnswerIndex": 1
+          },
+          {
+            "id": 2,
+            "videoSrc": "ls-q-2.mp4",
+            "answers": ["Answer X", "Answer Y", "Answer Z"],
+            "correctAnswerIndex": 0
+          },
+          {
+            "id": 3,
+            "videoSrc": "ls-q-3.mp4",
+            "answers": ["Answer X", "Answer Y", "Answer Z"],
+            "correctAnswerIndex": 0
+          },
+          {
+            "id": 4,
+            "videoSrc": "ls-q-4.mp4",
+            "answers": ["Answer X", "Answer Y", "Answer Z"],
+            "correctAnswerIndex": 0
+          }
+        ]
+      }
+    ]
+  }
+  
