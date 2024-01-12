@@ -41,13 +41,21 @@ export const useDataStore = defineStore('data', {
         console.error('No current question found.');
       }
 
+      console.log('score ' + this.score);
+
       setTimeout(() => {
         this.moveToNextQuestion();
-      }, 2000);
+      }, 500);
     },
 
     moveToNextQuestion() {
-      console.log('next');
+      if (this.currentQuestionIndex < this.quiz[0].questions.length - 1) {
+        this.currentQuestionIndex += 1;
+        console.log(this.currentQuestionIndex);
+        this.timer = 30;
+      } else {
+        console.log('Quiz completed! Your score:', this.score);
+      }
     },
   },
 });

@@ -28,8 +28,9 @@ export default defineComponent({
     console.log(useDataStore().quiz[0].questions[useDataStore().currentQuestionIndex]);
   },
   methods: {
-    handleAnswerSelected(index: number) {
-      console.log(`Selected answer: ${index}`);
+    handleAnswerSelected(answer: string) {
+      console.log('Selected answer:' + answer);
+      useDataStore().selectAnswer(answer);
     },
   },
 });
