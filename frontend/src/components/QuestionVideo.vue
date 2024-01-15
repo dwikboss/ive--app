@@ -1,7 +1,7 @@
 <template>
   <div class="question-video">
     <div class="video-container">
-      <video :key="questionVideoKey" loop>
+      <video :key="questionVideoKey">
         <source :src="questionVideo" type="video/mp4" />
         Your browser does not support the video tag.
       </video>

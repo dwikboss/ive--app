@@ -37,6 +37,9 @@ export default defineComponent({
     currentQuestionIndex() {
       return useDataStore().currentQuestionIndex;
     },
+    timer() {
+      return useDataStore().timer;
+    },
   },
   mounted() {
     console.log('bar');
