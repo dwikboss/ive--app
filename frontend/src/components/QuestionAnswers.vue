@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, watch } from 'vue';
 import AnswerButton from '@/components/AnswerButton.vue';
 import { useDataStore } from '@/store/_DataStore';
 
@@ -24,17 +24,15 @@ export default defineComponent({
       return useDataStore().quiz[0].questions[useDataStore().currentQuestionIndex];
     },
   },
-  mounted() {
-    console.log(useDataStore().quiz[0].questions[useDataStore().currentQuestionIndex]);
-  },
   methods: {
     handleAnswerSelected(answer: string) {
       console.log('Selected answer:' + answer);
-      useDataStore().selectAnswer(answer);
+      useDataStore().selectAnswer(answer, this.$router);
     },
   },
 });
 </script>
+
 
 <style scoped>
 .question-answers {

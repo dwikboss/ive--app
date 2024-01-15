@@ -28,6 +28,7 @@
 import { defineComponent } from 'vue';
 import RewardLoader from '@/components/RewardLoader.vue';
 import QuizList from '@/components/QuizList.vue';
+import { useDataStore } from '@/store/_DataStore';
 
 export default defineComponent({
   name: 'HomeView',
@@ -97,10 +98,10 @@ export default defineComponent({
   }
 
   .drawer {
-    height: 75vh;
     background-color: var(--white);
     margin-top: -5vh;
     border-radius: 50px 50px 0 0;
+    padding-bottom: 25px;
 
     h3 {
       margin-top: 50px;

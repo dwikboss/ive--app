@@ -7,6 +7,7 @@ import LocaleView from '@/components/LocaleView.vue';
 import Login from '../views/Login.vue';
 import Home from '../views/Home.vue';
 import Quiz from '../views/Quiz.vue';
+import Result from '../views/Result.vue';
 
 const { VITE_MULTILINGUAL_SUPPORTED_LOCALE, VITE_MULTILINGUAL_DEFAULT_LOCALE }: IEnv = import.meta.env;
 
@@ -25,6 +26,12 @@ const paths = [
     path: '/quiz/:id',
     name: PageName.QUIZ,
     component: Quiz,
+  },
+  {
+    path: '/result',
+    name: PageName.RESULT,
+    component: Result,
+    props: { default: true }
   },
 ];
 

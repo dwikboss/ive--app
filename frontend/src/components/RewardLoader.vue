@@ -1,10 +1,10 @@
 <template>
   <div class="nextreward-section">
-    <p>next reward</p>
+    <p>reward</p>
     <h2>IVE Photocard Set</h2>
     <div id="progress" class="progress">
       <div class="reward-image">
-        <p id="currPoints">1120</p>
+        <p id="currPoints">{{ calculatedScore }}</p>
         <p id="targetPoints">unlocks at 1250</p>
       </div>
     </div>
@@ -12,13 +12,35 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted } from 'vue';
 import ProgressBar from 'progressbar.js';
+import { useDataStore } from '@/store/_DataStore';
 
 export default defineComponent({
   name: 'RewardLoader',
+  data() {
+    return {
+      totalScore: 1250,
+      circle: null as any,
+    };
+  },
+  computed: {
+    calculatedScore() {
+      return useDataStore().calculatedScore;
+    },
+    progressPercentage() {
+      return (this.calculatedScore / this.totalScore) * 100;
+    },
+  },
+  watch: {
+    progressPercentage(newPercentage) {
+      if (this.circle) {
+        this.circle.animate(newPercentage / 100);
+      }
+    },
+  },
   mounted() {
-    var circle = new ProgressBar.Circle('#progress', {
+    this.circle = new ProgressBar.Circle('#progress', {
       color: '#000000',
       duration: 3000,
       easing: 'easeInOut',
@@ -26,10 +48,11 @@ export default defineComponent({
       trailWidth: 6,
     });
 
-    circle.animate(0.62);
+    this.circle.animate(this.progressPercentage / 100);
   },
 });
 </script>
+
 
 <style lang="scss" scoped>
 .nextreward-section {

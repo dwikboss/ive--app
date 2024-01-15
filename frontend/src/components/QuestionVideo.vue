@@ -1,7 +1,7 @@
 <template>
   <div class="question-video">
     <div class="video-container">
-      <video loop>
+      <video :key="questionVideoKey" loop>
         <source :src="questionVideo" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -16,10 +16,19 @@ import { useDataStore } from '@/store/_DataStore';
 
 export default defineComponent({
   name: 'QuestionVideo',
+  data() {
+    return {
+      isVideoVisible: true,
+    };
+  },
   computed: {
+    questionVideoKey() {
+      return this.questionVideo;
+    },
     questionVideo() {
       const videoSrc = useDataStore().quiz[0].questions[useDataStore().currentQuestionIndex].videoSrc;
       const path = new URL('@/assets/videos/', import.meta.url);
+      this.videoLoaded();
       return `${path}/${videoSrc}`;
     },
   },
@@ -36,10 +45,12 @@ export default defineComponent({
   methods: {
     playVideo() {
       const video = this.$el.querySelector('video');
-      console.log();
       if (video) {
         video.play();
       }
+    },
+    videoLoaded() {
+      console.log("loaded");
     },
   },
 });

@@ -19,6 +19,10 @@ export default defineComponent({
     handleClick() {
       this.isSelected = true;
       this.$emit('answer-selected', this.answer);
+
+      setTimeout(() => {
+        this.isSelected = false;
+      }, 500);
     },
   },
 });

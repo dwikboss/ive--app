@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Login from '../views/Login.vue';
 import Home from '../views/Home.vue';
 import Quiz from '../views/Quiz.vue';
+import Result from '../views/Result.vue';
 
 const routes = [
   {
@@ -19,6 +20,12 @@ const routes = [
     path: '/quiz/:id',
     name: PageName.QUIZ,
     component: Quiz,
+  },
+  {
+    path: '/result',
+    name: PageName.RESULT,
+    component: Result,
+    props: { default: true }
   },
 ];
 
