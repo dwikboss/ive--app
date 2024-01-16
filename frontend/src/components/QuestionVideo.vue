@@ -5,6 +5,8 @@
         <source :src="questionVideo" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+      <div v-if="captionShown" class="caption">{{ caption }}</div>
+      <img class="cc-btn" src="@/assets/images/icons/cc.png" @click="toggleCaptions" />
       <button @click="playVideo"></button>
     </div>
   </div>
@@ -19,6 +21,7 @@ export default defineComponent({
   data() {
     return {
       isVideoVisible: true,
+      captionShown: false,
     };
   },
   computed: {
@@ -30,6 +33,9 @@ export default defineComponent({
       const path = new URL('@/assets/videos/', import.meta.url);
       this.videoLoaded();
       return `${path}/${videoSrc}`;
+    },
+    caption() {
+      return useDataStore().quiz[0].questions[useDataStore().currentQuestionIndex].caption;
     },
   },
   watch: {
@@ -50,7 +56,10 @@ export default defineComponent({
       }
     },
     videoLoaded() {
-      console.log("loaded");
+      console.log('loaded');
+    },
+    toggleCaptions() {
+      this.captionShown = !this.captionShown;
     },
   },
 });
@@ -66,6 +75,29 @@ export default defineComponent({
   height: 100%;
   border-radius: 25px;
   position: relative;
+  display: flex;
+  justify-content: flex-end;
+
+  .caption {
+    background-color: rgba(0, 0, 0, 0.856);
+    z-index: 999;
+    position: absolute;
+    bottom: 70px;
+    margin-right: 25px;
+    margin-left: 25px;
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .cc-btn {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    z-index: 999;
+  }
 }
 
 .video-container video {

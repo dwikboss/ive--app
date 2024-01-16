@@ -1,8 +1,8 @@
 <template>
-  <div class="tile" @click="navigateToQuiz">
+  <div class="tile" :class="{ tile: true, 'disabled-tile': countdown > 0 }" @click="navigateToQuiz">
     <div class="tile-info">
       <p>450 points</p>
-      <p id="quizCountdown">00:05:12</p>
+      <p id="quizCountdown">{{ formattedTimer }}</p>
     </div>
     <div class="tile-desc">
       <p>{{ quiztype }}</p>
@@ -22,6 +22,37 @@ export default defineComponent({
     quiztype: { type: String, default: '' },
     artistname: { type: String, default: '' },
     artistimage: { type: String, default: '' },
+    timer: { type: Number, default: 0 },
+  },
+  data() {
+    return {
+      countdown: this.timer,
+    };
+  },
+  computed: {
+    formattedTimer(): string {
+      const hours = Math.floor(this.countdown / 3600);
+      const minutes = Math.floor((this.countdown % 3600) / 60);
+      const seconds = this.countdown % 60;
+
+      return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
+        2,
+        '0'
+      )}`;
+    },
+  },
+  mounted() {
+    let countdownInterval: any;
+
+    const updateCountdown = () => {
+      this.countdown -= 1;
+
+      if (this.countdown <= 0) {
+        clearInterval(countdownInterval);
+      }
+    };
+
+    countdownInterval = setInterval(updateCountdown, 1000);
   },
   methods: {
     navigateToQuiz() {
@@ -35,6 +66,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.disabled-tile {
+  opacity: 0.9;
+  pointer-events: none;
+}
+
 .tile {
   border-radius: 20px;
   min-height: 200px;

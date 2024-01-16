@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch } from 'vue';
+import { defineComponent } from 'vue';
 import AnswerButton from '@/components/AnswerButton.vue';
 import { useDataStore } from '@/store/_DataStore';
 
@@ -32,7 +32,6 @@ export default defineComponent({
   },
 });
 </script>
-
 
 <style scoped>
 .question-answers {

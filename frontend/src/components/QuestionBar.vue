@@ -3,7 +3,7 @@
     <div class="bar">
       <div class="bar-contents">
         <div class="back-container">
-          <img src="@/assets/images/icons/arrow.png" />
+          <img src="@/assets/images/icons/arrow.png" @click="navigateHome" />
         </div>
         <div class="timer-container">
           <img src="@/assets/images/icons/clock.png" />
@@ -44,7 +44,11 @@ export default defineComponent({
   mounted() {
     console.log('bar');
   },
-  methods: {},
+  methods: {
+    navigateHome() {
+      this.$router.push('/home');
+    },
+  },
 });
 </script>
 

@@ -1,65 +1,79 @@
 {
-    "quizzes": [
-      {
-        "id": 1,
-        "title": "How well do you know Gaeul and Yujin",
-        "questions": [
-          {
-            "id": 1,
-            "videoSrc": "gy-q-1.mp4",
-            "answers": ["Blue Blood", "Off the Record", "After Like"],
-            "correctAnswerIndex": 2
-          },
-          {
-            "id": 2,
-            "videoSrc": "gy-q-2.mp4",
-            "answers": ["Summer", "Autumn", "Winter"],
-            "correctAnswerIndex": 1
-          },
-          {
-            "id": 3,
-            "videoSrc": "gy-q-3.mp4",
-            "answers": ["SBS The Show", "KBS World Music Banks", "KBS World Inkigayo"],
-            "correctAnswerIndex": 0
-          },
-          {
-            "id": 4,
-            "videoSrc": "gy-q-4.mp4",
-            "answers": ["Mint Chocolate", "Honey Mustard", "Cheese balls"],
-            "correctAnswerIndex": 1
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "title": "Finish the lyric with Leeseo",
-        "questions": [
-          {
-            "id": 1,
-            "videoSrc": "ls-q-1.mp4",
-            "answers": ["Answer A", "Answer B", "Answer C"],
-            "correctAnswerIndex": 1
-          },
-          {
-            "id": 2,
-            "videoSrc": "ls-q-2.mp4",
-            "answers": ["Answer X", "Answer Y", "Answer Z"],
-            "correctAnswerIndex": 0
-          },
-          {
-            "id": 3,
-            "videoSrc": "ls-q-3.mp4",
-            "answers": ["Answer X", "Answer Y", "Answer Z"],
-            "correctAnswerIndex": 0
-          },
-          {
-            "id": 4,
-            "videoSrc": "ls-q-4.mp4",
-            "answers": ["Answer X", "Answer Y", "Answer Z"],
-            "correctAnswerIndex": 0
-          }
-        ]
-      }
-    ]
-  }
+  "quizzes": [
+    {
+      "id": 1,
+      "title": "How well do you know",
+      "artistname": "GAEUL & YUJIN",
+      "artistimage": "./src/assets/images/gy.png",
+      "timer": 8,
+      "questions": [
+        {
+          "id": 1,
+          "videoSrc": "gy-q-1.mp4",
+          "answers": ["Blue Blood", "Off the Record", "After Like"],
+          "correctAnswerIndex": 2,
+          "caption": "There was one choreo where I had trouble learning this hand part. ...What choreo am I talking about?"
+        },
+        {
+          "id": 2,
+          "videoSrc": "gy-q-2.mp4",
+          "answers": ["Summer", "Autumn", "Winter"],
+          "correctAnswerIndex": 1,
+          "caption": "I think I’ve mentioned this a lot but what is the Korean meaning of my name?"
+        },
+        {
+          "id": 3,
+          "videoSrc": "gy-q-3.mp4",
+          "answers": ["SBS The Show", "KBS World Music Banks", "KBS World Inkigayo"],
+          "correctAnswerIndex": 0,
+          "caption": "I almost forgot but during what music show did we first perform ‘ELEVEN’?"
+        },
+        {
+          "id": 4,
+          "videoSrc": "gy-q-4.mp4",
+          "answers": ["Mint Chocolate", "Honey Mustard", "Cheese balls"],
+          "correctAnswerIndex": 1,
+          "caption": "When we filmed... - do you remember Yujin? - ...1, 2, 3 IVE Season 1, Yujin HATED that I like to eat this with chicken."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Finish the lyric with",
+      "artistname": "LEESEO",
+      "artistimage": "./src/assets/images/ls.png",
+      "timer": 120,
+      "questions": [
+        {
+          "id": 1,
+          "videoSrc": "ls-q-1.mp4",
+          "answers": ["“This late night conversation...”", "“Off the record night...”", "“So this is my time...”"],
+          "correctAnswerIndex": 1,
+          "caption": "There was one choreo where I had trouble learning this hand part. ...In what choreo was that?"
+        },
+        {
+          "id": 2,
+          "videoSrc": "ls-q-2.mp4",
+          "answers": ["“My favorite things...”", "“That's my style...”", "“Oh, what a good time...”"],
+          "correctAnswerIndex": 0,
+          "caption": "There was one choreo where I had trouble learning this hand part. ...In what choreo was that?"
+        },
+        {
+          "id": 3,
+          "videoSrc": "ls-q-3.mp4",
+          "answers": ["“My favorite things...”", "“That's my style...”", "“Oh, what a good time...”"],
+          "correctAnswerIndex": 2,
+          "caption": "There was one choreo where I had trouble learning this hand part. ...In what choreo was that?"
+        },
+        {
+          "id": 4,
+          "videoSrc": "ls-q-4.mp4",
+          "answers": ["“Pretty little risky baddie...”", "“Little pretty risky baddie...”", "“Nothing like the regulars...”"],
+          "correctAnswerIndex": 1,
+          "caption": "There was one choreo where I had trouble learning this hand part. ...In what choreo was that?"
+        }
+      ]
+    }
+  ]
+}
   

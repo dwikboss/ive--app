@@ -10,6 +10,7 @@ interface DataStoreState {
   currentQuestionIndex: number;
   score: number;
   calculatedScore: number;
+  calculatedTotalScore: number;
   timer: number;
 }
 
@@ -20,10 +21,13 @@ export const useDataStore = defineStore('data', {
     currentQuestionIndex: 0,
     score: 0,
     calculatedScore: 0,
+    calculatedTotalScore: 0,
     timer: 30,
   }),
   actions: {
     loadQuizData(quizId: number) {
+      this.score = 0;
+      this.calculatedScore = 0;
       const selectedQuiz = quizData.quizzes.find((quiz) => quiz.id === quizId);
 
       if (selectedQuiz) {
@@ -35,7 +39,6 @@ export const useDataStore = defineStore('data', {
 
     selectAnswer(selectedAnswer: string, route: any) {
       const currentQuestion = this.quiz[0].questions[this.currentQuestionIndex];
-
       if (currentQuestion) {
         if (selectedAnswer === currentQuestion.answers[currentQuestion.correctAnswerIndex]) {
           this.score += 1;
@@ -59,6 +62,8 @@ export const useDataStore = defineStore('data', {
         this.timer = 30;
       } else {
         console.log('Quiz completed! Your score:', this.score);
+        this.currentQuestionIndex = 0;
+        this.calculatedTotalScore += this.calculatedScore;
         router.push({
           name: PageName.RESULT,
         });

@@ -4,7 +4,7 @@
     <h2>IVE Photocard Set</h2>
     <div id="progress" class="progress">
       <div class="reward-image">
-        <p id="currPoints">{{ calculatedScore }}</p>
+        <p id="currPoints">{{ calculatedTotalScore }}</p>
         <p id="targetPoints">unlocks at 1250</p>
       </div>
     </div>
@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue';
+import { defineComponent } from 'vue';
 import ProgressBar from 'progressbar.js';
 import { useDataStore } from '@/store/_DataStore';
 
@@ -25,11 +25,11 @@ export default defineComponent({
     };
   },
   computed: {
-    calculatedScore() {
-      return useDataStore().calculatedScore;
+    calculatedTotalScore() {
+      return useDataStore().calculatedTotalScore;
     },
     progressPercentage() {
-      return (this.calculatedScore / this.totalScore) * 100;
+      return (this.calculatedTotalScore / this.totalScore) * 100;
     },
   },
   watch: {
@@ -52,7 +52,6 @@ export default defineComponent({
   },
 });
 </script>
-
 
 <style lang="scss" scoped>
 .nextreward-section {

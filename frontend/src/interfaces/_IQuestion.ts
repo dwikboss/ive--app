@@ -3,4 +3,5 @@ export interface Question {
   videoSrc: string;
   answers: string[];
   correctAnswerIndex: number;
+  caption: string;
 }

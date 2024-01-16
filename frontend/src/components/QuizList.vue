@@ -1,16 +1,13 @@
 <template>
   <div class="quiz-tiles">
     <QuizTile
-      :id="1"
-      :quiztype="'How well do you know'"
-      :artistname="'GAEUL & YUJIN'"
-      :artistimage="`url('./src/assets/images/gy.png')`"
-    />
-    <QuizTile
-      :id="2"
-      :quiztype="'Finish the lyric with'"
-      :artistname="'LEESEO'"
-      :artistimage="`url('./src/assets/images/ls.png')`"
+      v-for="quiz in quizData.quizzes"
+      :id="quiz.id"
+      :key="quiz.id"
+      :quiztype="quiz.title"
+      :artistname="quiz.artistname"
+      :artistimage="`url(${quiz.artistimage})`"
+      :timer="quiz.timer"
     />
   </div>
 </template>
@@ -18,10 +15,16 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import QuizTile from '@/components/QuizTile.vue';
+import quizData from '@/assets/data/quizzes.json';
 
 export default defineComponent({
   name: 'QuizList',
   components: { QuizTile },
+  data() {
+    return {
+      quizData: quizData,
+    };
+  },
 });
 </script>
 
