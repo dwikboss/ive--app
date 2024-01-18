@@ -20,12 +20,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { useDataStore } from '@/store/_DataStore';
 
 export default defineComponent({
   name: 'LoginView',
   methods: {
     navigateLogin() {
       this.$router.push('/home');
+      useDataStore().startQuizTimer();
     },
   },
 });

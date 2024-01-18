@@ -7,7 +7,6 @@
       :quiztype="quiz.title"
       :artistname="quiz.artistname"
       :artistimage="`url(${quiz.artistimage})`"
-      :timer="quiz.timer"
     />
   </div>
 </template>

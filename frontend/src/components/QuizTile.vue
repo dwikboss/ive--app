@@ -1,8 +1,8 @@
 <template>
-  <div class="tile" :class="{ tile: true, 'disabled-tile': countdown > 0 }" @click="navigateToQuiz">
+  <div :class="{ tile: true, 'disabled-tile': timerIsRunning }" @click="navigateToQuiz">
     <div class="tile-info">
       <p>450 points</p>
-      <p id="quizCountdown">{{ formattedTimer }}</p>
+      <p id="quizCountdown">{{ formattedQuizTimer }}</p>
     </div>
     <div class="tile-desc">
       <p>{{ quiztype }}</p>
@@ -14,6 +14,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { PageName } from '@/utils/_Constants';
+import { useDataStore } from '@/store/_DataStore';
 
 export default defineComponent({
   name: 'QuizTile',
@@ -22,44 +23,33 @@ export default defineComponent({
     quiztype: { type: String, default: '' },
     artistname: { type: String, default: '' },
     artistimage: { type: String, default: '' },
-    timer: { type: Number, default: 0 },
-  },
-  data() {
-    return {
-      countdown: this.timer,
-    };
   },
   computed: {
-    formattedTimer(): string {
-      const hours = Math.floor(this.countdown / 3600);
-      const minutes = Math.floor((this.countdown % 3600) / 60);
-      const seconds = this.countdown % 60;
+    quizTimer() {
+      return useDataStore().quizTimers[this.id] || 0;
+    },
+    formattedQuizTimer() {
+      const hours = Math.floor(this.quizTimer / 3600);
+      const minutes = Math.floor((this.quizTimer % 3600) / 60);
+      const seconds = this.quizTimer % 60;
 
       return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(
         2,
         '0'
       )}`;
     },
-  },
-  mounted() {
-    let countdownInterval: any;
-
-    const updateCountdown = () => {
-      this.countdown -= 1;
-
-      if (this.countdown <= 0) {
-        clearInterval(countdownInterval);
-      }
-    };
-
-    countdownInterval = setInterval(updateCountdown, 1000);
+    timerIsRunning() {
+      return this.quizTimer > 0;
+    },
   },
   methods: {
     navigateToQuiz() {
-      this.$router.push({
-        name: PageName.QUIZ,
-        params: { id: this.id.toString() },
-      });
+      if (!this.timerIsRunning) {
+        this.$router.push({
+          name: PageName.QUIZ,
+          params: { id: this.id.toString() },
+        });
+      }
     },
   },
 });
@@ -67,7 +57,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .disabled-tile {
-  opacity: 0.9;
+  opacity: 0.75;
   pointer-events: none;
 }
 

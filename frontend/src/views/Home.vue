@@ -28,7 +28,6 @@
 import { defineComponent } from 'vue';
 import RewardLoader from '@/components/RewardLoader.vue';
 import QuizList from '@/components/QuizList.vue';
-import { useDataStore } from '@/store/_DataStore';
 
 export default defineComponent({
   name: 'HomeView',

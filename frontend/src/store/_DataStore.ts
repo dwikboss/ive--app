@@ -12,6 +12,7 @@ interface DataStoreState {
   calculatedScore: number;
   calculatedTotalScore: number;
   timer: number;
+  quizTimers: Record<number, number>;
 }
 
 export const useDataStore = defineStore('data', {
@@ -23,8 +24,28 @@ export const useDataStore = defineStore('data', {
     calculatedScore: 0,
     calculatedTotalScore: 0,
     timer: 30,
+    quizTimers: {},
   }),
   actions: {
+    startQuizTimer() {
+      for (const quiz of quizData.quizzes) {
+        this.quizTimers[quiz.id] = quiz.timer;
+      }
+
+      setInterval(() => {
+        for (const quizId in this.quizTimers) {
+          if (Object.prototype.hasOwnProperty.call(this.quizTimers, quizId)) {
+            const remainingTime = this.quizTimers[quizId];
+
+            if (remainingTime > 0) {
+              this.quizTimers[quizId]--;
+              console.log(`Quiz ${quizId} remaining time: ${this.quizTimers[quizId]} seconds`);
+            }
+          }
+        }
+      }, 1000);
+    },
+
     loadQuizData(quizId: number) {
       this.score = 0;
       this.calculatedScore = 0;
